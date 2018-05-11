@@ -12,14 +12,15 @@ import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Collection;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Analyzer extends SimpleFileVisitor<Path> {
 
     private Collector collector;
-    private Collection<AbstractVoidVisitorAdapter<Collector>> visitors;
+    private Collection<AbstractVoidVisitorAdapter> visitors;
 
     @Inject
-    public Analyzer(Collector collector, Set<AbstractVoidVisitorAdapter<Collector>> visitors) {
+    public Analyzer(Collector collector, Set<AbstractVoidVisitorAdapter> visitors) {
         this.collector = collector;
         this.visitors = visitors;
     }
@@ -31,7 +32,7 @@ public class Analyzer extends SimpleFileVisitor<Path> {
 
         CompilationUnit unit = JavaParser.parse(file.toFile());
 
-        for (AbstractVoidVisitorAdapter<Collector> visitor: visitors) {
+        for (AbstractVoidVisitorAdapter visitor: visitors) {
             visitor.visit(unit, collector);
         }
 
@@ -39,6 +40,6 @@ public class Analyzer extends SimpleFileVisitor<Path> {
     }
 
     private boolean isJava(Path file) {
-        return file.getFileName().endsWith("java");
+        return file.getFileName().toString().endsWith("java");
     }
 }

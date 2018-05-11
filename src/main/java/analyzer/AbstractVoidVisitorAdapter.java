@@ -1,12 +1,12 @@
 package analyzer;
 
+import analyzer.collectors.Collector;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 
-public abstract class AbstractVoidVisitorAdapter<A> extends VoidVisitorAdapter<A> {
+public abstract class AbstractVoidVisitorAdapter extends VoidVisitorAdapter<Collector> {
 
-    @Override
-    public void visit(CompilationUnit cu, A arg) {
-        super.visit(cu, arg);
+    public void visit(final CompilationUnit compilationUnit, final Collector arg) {
+        super.visit(compilationUnit, arg);
     }
 }

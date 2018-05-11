@@ -26,6 +26,7 @@ public class Main {
             Files.walkFileTree(path, analyzer);
 
             Collector collector = injector.getInstance(Collector.class);
+            System.out.println(collector.getWarnings());
         } catch (IOException e) {
             e.printStackTrace();
         }
