@@ -1,5 +1,6 @@
 import analyzer.Analyzer;
 import analyzer.collectors.Collector;
+import analyzer.presenters.Presenter;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
@@ -23,10 +24,12 @@ public class Main {
         try {
             Injector injector = Guice.createInjector(new DiConfigModule());
             Analyzer analyzer = injector.getInstance(Analyzer.class);
+            Presenter presenter = injector.getInstance(Presenter.class);
             Files.walkFileTree(path, analyzer);
 
             Collector collector = injector.getInstance(Collector.class);
-            System.out.println(collector.getWarnings());
+
+            presenter.present(collector);
         } catch (IOException e) {
             e.printStackTrace();
         }

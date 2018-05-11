@@ -1,6 +1,8 @@
 import analyzer.BaseAdapter;
 import analyzer.collectors.Collector;
 import analyzer.collectors.SimpleCollector;
+import analyzer.presenters.Presenter;
+import analyzer.presenters.PresenterImpl;
 import analyzer.rules.BooleanMethodNamingChecker;
 import analyzer.rules.ClassLineChecker;
 import analyzer.rules.VariableNameLengthChecker;
@@ -19,5 +21,6 @@ public class DiConfigModule extends AbstractModule {
         visitorBinder.addBinding().to(VariableNameLengthChecker.class);
 
         bind(Collector.class).to(SimpleCollector.class).in(Singleton.class);
+        bind(Presenter.class).to(PresenterImpl.class).in(Singleton.class);
     }
 }

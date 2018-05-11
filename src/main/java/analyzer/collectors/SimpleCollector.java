@@ -8,6 +8,10 @@ public class SimpleCollector implements Collector {
 
     private HashMap<String, List<String>> warnings;
 
+    public SimpleCollector() {
+        warnings = new HashMap<>();
+    }
+
     @Override
     public void addWarning(String className, String warning) {
         warnings.putIfAbsent(className, new ArrayList<>());
