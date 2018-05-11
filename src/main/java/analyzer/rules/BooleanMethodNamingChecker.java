@@ -13,11 +13,12 @@ public class BooleanMethodNamingChecker extends BaseAdapter {
                 declaration.getNameAsString().startsWith("are") ||
                 declaration.getNameAsString().startsWith("should") ||
                 declaration.getNameAsString().startsWith("has") ||
+                declaration.getNameAsString().startsWith("whether") ||
                 declaration.getNameAsString().startsWith("can")) {
             return;
         }
 
-        collector.addWarning(className, "Method name \"" + declaration.getNameAsString() +
-                "\" should be like a question.");
+        collector.addWarning(className, "Method " + className + ":" + declaration.getNameAsString() +
+                " should be like a question.");
     }
 }

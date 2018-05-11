@@ -14,13 +14,13 @@ public class VariableNameLengthChecker extends BaseAdapter {
         declaration.getVariables()
                 .stream()
                 .filter(x -> x.getNameAsString().length() < MIN_VARIABLE_LENGTH)
-                .forEach(x -> collector.addWarning(className,
+                .forEach(x -> collector.addInfo(className,
                         "Variable name \"" + x.getNameAsString() + "\" has too small name"));
 
         declaration.getVariables()
                 .stream()
                 .filter(x -> x.getNameAsString().length() > MAX_VARIABLE_LENGTH)
-                .forEach(x -> collector.addWarning(className,
+                .forEach(x -> collector.addInfo(className,
                         "Variable name \"" + x.getNameAsString() + "\" has too long name"));
     }
 }

@@ -7,5 +7,9 @@ public interface Collector {
 
     void addWarning(String className, String warning);
 
+    void addInfo(String className, String warning);
+
     HashMap<String, List<String>> getWarnings();
+
+    HashMap<String, List<String>> getInfo();
 }
