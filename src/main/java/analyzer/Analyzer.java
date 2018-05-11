@@ -12,15 +12,14 @@ import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Collection;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class Analyzer extends SimpleFileVisitor<Path> {
 
     private Collector collector;
-    private Collection<AbstractVoidVisitorAdapter> visitors;
+    private Collection<BaseAdapter> visitors;
 
     @Inject
-    public Analyzer(Collector collector, Set<AbstractVoidVisitorAdapter> visitors) {
+    public Analyzer(Collector collector, Set<BaseAdapter> visitors) {
         this.collector = collector;
         this.visitors = visitors;
     }
@@ -32,7 +31,7 @@ public class Analyzer extends SimpleFileVisitor<Path> {
 
         CompilationUnit unit = JavaParser.parse(file.toFile());
 
-        for (AbstractVoidVisitorAdapter visitor: visitors) {
+        for (BaseAdapter visitor: visitors) {
             visitor.visit(unit, collector);
         }
 

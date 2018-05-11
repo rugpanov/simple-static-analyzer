@@ -1,15 +1,14 @@
 package analyzer.rules;
 
-import analyzer.AbstractVoidVisitorAdapter;
+import analyzer.BaseAdapter;
 import analyzer.collectors.Collector;
-import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.body.Parameter;
 import com.github.javaparser.ast.body.VariableDeclarator;
 import com.github.javaparser.ast.expr.VariableDeclarationExpr;
 
-public class VariableNamingConventionChecker extends AbstractVoidVisitorAdapter {
+public class VariableNamingConventionChecker extends BaseAdapter {
 
     private static final String CLASS_NAME_REGEX = "([A-Z][a-z0-9]+)+";
 
@@ -18,17 +17,6 @@ public class VariableNamingConventionChecker extends AbstractVoidVisitorAdapter 
     private static final String CONST_REGEX = "/(([A-Z]+_[A-Z]*)+)/gx";
 
     private String methodName;
-
-    private String className = "Undefined";
-
-    @Override
-    public void visit(CompilationUnit compilationUnit, Collector collector) {
-
-        if (compilationUnit.getTypes().size() > 0) {
-            className = compilationUnit.getTypes().get(0).getNameAsString();
-        }
-        super.visit(compilationUnit, collector);
-    }
 
     @Override
     public void visit(ClassOrInterfaceDeclaration declaration, Collector collector) {

@@ -1,21 +1,10 @@
 package analyzer.rules;
 
-import analyzer.AbstractVoidVisitorAdapter;
+import analyzer.BaseAdapter;
 import analyzer.collectors.Collector;
-import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.body.MethodDeclaration;
 
-public class BooleanMethodNamingChecker extends AbstractVoidVisitorAdapter {
-
-    private String className = "Undefined";
-
-    @Override
-    public void visit(CompilationUnit compilationUnit, Collector collector) {
-        if (compilationUnit.getTypes().size() > 0) {
-            className = compilationUnit.getTypes().get(0).getNameAsString();
-        }
-        super.visit(compilationUnit, collector);
-    }
+public class BooleanMethodNamingChecker extends BaseAdapter {
 
     @Override
     public void visit(MethodDeclaration declaration, Collector collector) {

@@ -1,4 +1,4 @@
-import analyzer.AbstractVoidVisitorAdapter;
+import analyzer.BaseAdapter;
 import analyzer.collectors.Collector;
 import analyzer.collectors.SimpleCollector;
 import analyzer.rules.BooleanMethodNamingChecker;
@@ -12,8 +12,7 @@ import com.google.inject.multibindings.Multibinder;
 public class DiConfigModule extends AbstractModule {
     @Override
     protected void configure() {
-        Multibinder<AbstractVoidVisitorAdapter> visitorBinder =
-                Multibinder.newSetBinder(binder(), AbstractVoidVisitorAdapter.class);
+        Multibinder<BaseAdapter> visitorBinder = Multibinder.newSetBinder(binder(), BaseAdapter.class);
         visitorBinder.addBinding().to(BooleanMethodNamingChecker.class);
         visitorBinder.addBinding().to(ClassLineChecker.class);
         visitorBinder.addBinding().to(VariableNamingConventionChecker.class);
