@@ -1,8 +1,11 @@
 package analyzer;
 
 import analyzer.collectors.Collector;
+import com.github.javaparser.JavaParser;
+import com.github.javaparser.ast.CompilationUnit;
 import com.google.inject.Inject;
 
+import java.io.FileNotFoundException;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
@@ -22,8 +25,20 @@ public class Analyzer extends SimpleFileVisitor<Path> {
     }
 
     @Override
-    public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) {
+    public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws FileNotFoundException {
+        if (!isJava(file))
+            return FileVisitResult.CONTINUE;
+
+        CompilationUnit unit = JavaParser.parse(file.toFile());
+
+        for (AbstractVoidVisitorAdapter<Collector> visitor: visitors) {
+            visitor.visit(unit, collector);
+        }
+
         return FileVisitResult.CONTINUE;
     }
 
+    private boolean isJava(Path file) {
+        return file.getFileName().endsWith("java");
+    }
 }
