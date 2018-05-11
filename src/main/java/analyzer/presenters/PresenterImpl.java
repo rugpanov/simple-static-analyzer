@@ -1,14 +1,22 @@
 package analyzer.presenters;
 
 import analyzer.collectors.Collector;
+import com.google.inject.Inject;
 
 import java.util.List;
 import java.util.Map;
 
 public class PresenterImpl implements Presenter {
 
+    private final Collector collector;
+
+    @Inject
+    public PresenterImpl(Collector collector) {
+        this.collector = collector;
+    }
+
     @Override
-    public void present(Collector collector) {
+    public void present() {
         int warnCounter = 0;
         int infoCounter = 0;
 
