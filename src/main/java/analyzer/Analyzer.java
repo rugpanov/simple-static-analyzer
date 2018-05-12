@@ -2,6 +2,7 @@ package analyzer;
 
 import analyzer.collectors.Collector;
 import com.github.javaparser.JavaParser;
+import com.github.javaparser.ParseProblemException;
 import com.github.javaparser.ast.CompilationUnit;
 import com.google.inject.Inject;
 
@@ -28,17 +29,28 @@ public class Analyzer extends SimpleFileVisitor<Path> {
     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws FileNotFoundException {
         if (!isJava(file))
             return FileVisitResult.CONTINUE;
-
-        CompilationUnit unit = JavaParser.parse(file.toFile());
-
-        for (BaseAdapter visitor: visitors) {
-            visitor.visit(unit, collector);
+        try {
+            CompilationUnit unit = JavaParser.parse(file.toFile());
+            for (BaseAdapter visitor: visitors) {
+                visitor.visit(unit, collector);
+            }
+        } catch (ParseProblemException err) {
+            collector.addWarning(extractClassName(file), "Method cannot be 'abstract' and also 'private', 'static'!!!");
         }
-
         return FileVisitResult.CONTINUE;
     }
 
     private boolean isJava(Path file) {
         return file.getFileName().toString().endsWith("java");
+    }
+
+    private String extractClassName(Path file) {
+
+        String filename = file.getFileName().toString();
+
+        if (filename.indexOf(".") > 0) {
+            filename = filename.substring(0, filename.lastIndexOf("."));
+        }
+        return filename;
     }
 }
