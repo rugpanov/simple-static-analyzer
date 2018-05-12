@@ -10,7 +10,8 @@ public class ClassLineChecker extends BaseAdapter {
     public void visit(CompilationUnit compilationUnit, Collector collector) {
         int count = compilationUnit.toString().split("\n").length;
         if (count > MAX_CLASS_LENGTH) {
-            collector.addWarning(className, "Class has more than " + MAX_CLASS_LENGTH + " lines");
+            collector.addWarning(className, "Class " + className +
+                    "has more than " + MAX_CLASS_LENGTH + " lines");
         }
 
         super.visit(compilationUnit, collector);

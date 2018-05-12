@@ -29,24 +29,24 @@ public class PresenterImpl implements Presenter {
         }
 
         if (warnCounter == 0) {
-            System.out.println("No warnings!");
+            System.out.println("No warning problems!");
         } else if (warnCounter == 1) {
-            System.out.println("In the project there is 1 warning!");
+            System.out.println("In the project there is 1 warning problem!");
         } else {
-            System.out.println("In the project there are " + warnCounter + " warnings!");
+            System.out.println("In the project there are " + warnCounter + " warning problems!");
         }
 
         if (infoCounter == 0) {
-            System.out.println("No warnings!");
+            System.out.println("No info problems!");
         } else if (infoCounter == 1) {
-            System.out.println("In the project there is 1 info!");
+            System.out.println("In the project there is 1 info problem!");
         } else {
-            System.out.println("In the project there are " + infoCounter + " info!");
+            System.out.println("In the project there are " + infoCounter + " info problems!");
         }
 
-
+        System.out.println();
         for (Map.Entry<String, List<String>> entry : collector.getWarnings().entrySet()) {
-            System.out.println(entry.getKey() + " class has " + entry.getValue().size() + " warnings");
+            System.out.println(entry.getKey() + " class has " + entry.getValue().size() + " warning problems");
             for (String warning : entry.getValue()) {
                 System.out.println("[WARNING] " + warning);
             }
@@ -54,7 +54,7 @@ public class PresenterImpl implements Presenter {
         }
 
         for (Map.Entry<String, List<String>> entry : collector.getInfo().entrySet()) {
-            System.out.println(entry.getKey() + " class has " + entry.getValue().size() + " infos");
+            System.out.println(entry.getKey() + " class has " + entry.getValue().size() + " info problems");
             for (String info : entry.getValue()) {
                 System.out.println("[INFO] " + info);
             }
