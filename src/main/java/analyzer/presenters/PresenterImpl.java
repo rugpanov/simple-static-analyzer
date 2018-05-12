@@ -33,7 +33,7 @@ public class PresenterImpl implements Presenter {
         } else if (warnCounter == 1) {
             System.out.println("In the project there is 1 warning!");
         } else {
-            System.out.println("In the project there is " + warnCounter + " warnings!");
+            System.out.println("In the project there are " + warnCounter + " warnings!");
         }
 
         if (infoCounter == 0) {
@@ -41,7 +41,7 @@ public class PresenterImpl implements Presenter {
         } else if (infoCounter == 1) {
             System.out.println("In the project there is 1 info!");
         } else {
-            System.out.println("In the project there is " + infoCounter + " info!");
+            System.out.println("In the project there are " + infoCounter + " info!");
         }
 
 
