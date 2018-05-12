@@ -14,11 +14,15 @@ public class BooleanMethodNamingChecker extends BaseAdapter {
                 declaration.getNameAsString().startsWith("should") ||
                 declaration.getNameAsString().startsWith("has") ||
                 declaration.getNameAsString().startsWith("whether") ||
-                declaration.getNameAsString().startsWith("can")) {
+                declaration.getNameAsString().startsWith("would") ||
+                declaration.getNameAsString().startsWith("were") ||
+                declaration.getNameAsString().startsWith("will") ||
+                declaration.getNameAsString().startsWith("can") ||
+                declaration.getNameAsString().startsWith("could")) {
             return;
         }
 
         collector.addWarning(className, "Method " + className + ":" + declaration.getNameAsString() +
-                " should be like a question.");
+                " is not start with a question word.");
     }
 }
