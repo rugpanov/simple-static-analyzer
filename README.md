@@ -16,3 +16,6 @@ Simple static analyzer for my verification course
 (For example: private and static methods should not be final /
 non-public method should not have public constructor /
 method cannot be 'abstract' and also 'private', 'static' )
+
+## Download .jar
+[`Release 1.0.0` - analyzer.jar](https://github.com/rugpanov/simple-static-analyzer/releases/download/1.0.0/analyzer.jar)
