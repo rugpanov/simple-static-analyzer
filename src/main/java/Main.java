@@ -13,7 +13,7 @@ public class Main {
 
     public static void main(String[] args) {
         if (args.length == 0) {
-            System.out.println("Usage: java -jar analyzer [path]");
+            System.out.println("Usage: java -jar analyzer.jar [path to the project]");
         } else {
             String path = args[0];
             walkThroughFiles(Paths.get(path));
@@ -24,12 +24,10 @@ public class Main {
         try {
             Injector injector = Guice.createInjector(new DiConfigModule());
             Analyzer analyzer = injector.getInstance(Analyzer.class);
-            Presenter presenter = injector.getInstance(Presenter.class);
             Files.walkFileTree(path, analyzer);
 
-            Collector collector = injector.getInstance(Collector.class);
-
-            presenter.present(collector);
+            Presenter presenter = injector.getInstance(Presenter.class);
+            presenter.present();
         } catch (IOException e) {
             e.printStackTrace();
         }
