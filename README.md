@@ -12,7 +12,7 @@ CodeUtils class has 3 warnings
 Code class has 3 warnings
 [WARNING] Method Code:equals is not start with a question word.
 [WARNING] Method Code:ZERO_CODE not in 'camelCase'
-[WARNING] Class has more than 250 lines
+[WARNING] Class Code has more than 250 lines
 ```
 
 ## Packaging
