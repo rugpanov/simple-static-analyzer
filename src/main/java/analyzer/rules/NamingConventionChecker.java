@@ -8,7 +8,7 @@ import com.github.javaparser.ast.body.Parameter;
 import com.github.javaparser.ast.body.VariableDeclarator;
 import com.github.javaparser.ast.expr.VariableDeclarationExpr;
 
-public class VariableNamingConventionChecker extends BaseAdapter {
+public class NamingConventionChecker extends BaseAdapter {
 
     private static final String CLASS_NAME_REGEX = "([A-Z][a-z0-9]+)+";
 
