@@ -1,5 +1,19 @@
 # Static Analyzer
-Simple static analyzer for my verification course
+Simple static analyzer for the verification course
+```
+In the project there are 6 warnings!
+In the project there are 51 info problems!
+
+CodeUtils class has 3 warnings
+[WARNING] Method CodeUtils:checkWhetherCyclicMatrix is not start with a question word.
+[WARNING] Method CodeUtils:checkOtherParameters is not start with a question word.
+[WARNING] Non-public class "CodeUtils" has public constructors.
+
+Code class has 3 warnings
+[WARNING] Method Code:equals is not start with a question word.
+[WARNING] Method Code:ZERO_CODE not in 'camelCase'
+[WARNING] Class has more than 250 lines
+```
 
 ## Packaging
 `mvn package`
