@@ -1,4 +1,4 @@
-# Static Analyzer ![release v1.0.0](https://img.shields.io/github/release/rugpanov/simple-static-analyzer.svg)
+# Static Analyzer ![release v1.0.0](https://img.shields.io/github/release/rugpanov/simple-static-analyzer.svg) ![](assert/ifmo.svg)
 Simple static analyzer for the verification course
 ```
 In the project there are 6 warnings!
