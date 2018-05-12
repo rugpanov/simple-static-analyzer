@@ -12,3 +12,7 @@ Simple static analyzer for my verification course
 - `ClassLineChecker` - check whether classes have less then 250 lines.
 - `VariableNameLengthChecker` - check whether variables have not too long and not loo small names.
 - `NamingConventionChecker` - check whether variables conform the 'camelCase' naming rule and classes conform the 'CamelCase' naming rule.
+- `IncompatibleDeclarationsCheck` - check whether all declarations of methods are correct.
+(For example: private and static methods should not be final /
+non-public method should not have public constructor /
+method cannot be 'abstract' and also 'private', 'static' )
