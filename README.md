@@ -1,4 +1,4 @@
-# Static Analyzer ![release v1.0.0](https://img.shields.io/github/release/rugpanov/simple-static-analyzer.svg) ![](assert/ifmo.svg)
+# Static Analyzer ![release v1.0.0](https://img.shields.io/github/release/rugpanov/simple-static-analyzer.svg)
 Simple static analyzer for the verification course
 ```
 In the project there are 6 warnings!
@@ -33,3 +33,6 @@ method cannot be 'abstract' and also 'private', 'static').
 
 ## Download .jar
 [`Release 1.0.0` - analyzer.jar](https://github.com/rugpanov/simple-static-analyzer/releases/download/1.0.0/analyzer.jar)
+
+\
+![](assert/ifmo.svg)
