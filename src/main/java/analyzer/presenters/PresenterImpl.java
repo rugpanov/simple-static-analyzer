@@ -3,10 +3,22 @@ package analyzer.presenters;
 import analyzer.collectors.Collector;
 import com.google.inject.Inject;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class PresenterImpl implements Presenter {
+
+    private class Problem {
+        private String text;
+        private String severity;
+
+        Problem(String severity, String text) {
+            this.text = text;
+            this.severity = severity;
+        }
+    }
 
     private final Collector collector;
 
@@ -44,19 +56,29 @@ public class PresenterImpl implements Presenter {
             System.out.println("In the project there are " + infoCounter + " info problems!");
         }
 
-        System.out.println();
+        HashMap<String, List<Problem>> map = new HashMap<>();
+
         for (Map.Entry<String, List<String>> entry : collector.getWarnings().entrySet()) {
-            System.out.println(entry.getKey() + " class has " + entry.getValue().size() + " warning problems");
+            List<Problem> problems = new ArrayList<>();
             for (String warning : entry.getValue()) {
-                System.out.println("[WARNING] " + warning);
+                problems.add(new Problem("[WARNING]", warning));
             }
-            System.out.println();
+            map.put(entry.getKey(), problems);
         }
 
         for (Map.Entry<String, List<String>> entry : collector.getInfo().entrySet()) {
-            System.out.println(entry.getKey() + " class has " + entry.getValue().size() + " info problems");
-            for (String info : entry.getValue()) {
-                System.out.println("[INFO] " + info);
+            List<Problem> problems = map.getOrDefault(entry.getKey(), new ArrayList<>());
+            for (String text : entry.getValue()) {
+                problems.add(new Problem("[INFO]", text));
+            }
+            map.put(entry.getKey(), problems);
+        }
+
+        System.out.println();
+        for (Map.Entry<String, List<Problem>> entry : map.entrySet()) {
+            System.out.println(entry.getKey() + " class has " + entry.getValue().size() + " problems");
+            for (Problem problem : entry.getValue()) {
+                System.out.println(problem.severity + " " + problem.text);
             }
             System.out.println();
         }
