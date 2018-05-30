@@ -24,12 +24,16 @@ Code class has 3 warnings
 ## Heuristics
 - `BooleanMethodNamingChecker` - check whether boolean method names conform the rule 'should ask a question in the method names'.
 - `ClassLineChecker` - check whether classes have less then 250 lines.
-- `VariableNameLengthChecker` - check whether variables have not too long and not loo small names.
+- `VariableNameLengthChecker` - check whether variables have not too long and not too small names.
 - `NamingConventionChecker` - check whether variables conform the 'camelCase' naming rule and classes conform the 'CamelCase' naming rule.
 - `IncompatibleDeclarationsCheck` - check whether all declarations of methods are correct.
 (For example: private and static methods should not be final /
 non-public method should not have public constructor /
 method cannot be 'abstract' and also 'private', 'static').
+- `ConstantConditionChecker` - check whether 'if/do/while' statement doesn't have meaningless constant conditions.
+- `MaxNestingChecker` - check whether block nesting in methods not exceeds 3.
+- `SameIfBranchesChecker` - check whether 'if' statement have different branches.
+- `UnusedVariablesChecker` - check whether all method parameters appear in the body.
 
 ## Download .jar
 [`Release 1.0.0` - analyzer.jar](https://github.com/rugpanov/simple-static-analyzer/releases/download/1.0.0/analyzer.jar)

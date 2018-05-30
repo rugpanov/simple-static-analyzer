@@ -18,6 +18,11 @@ public class DiConfigModule extends AbstractModule {
         visitorBinder.addBinding().to(VariableNameLengthChecker.class);
         visitorBinder.addBinding().to(IncompatibleDeclarationsCheck.class);
 
+        visitorBinder.addBinding().to(MaxNestingChecker.class);
+        visitorBinder.addBinding().to(UnusedVariablesChecker.class);
+        visitorBinder.addBinding().to(SameIfBranchesChecker.class);
+        visitorBinder.addBinding().to(ConstantConditionChecker.class);
+
         bind(Collector.class).to(SimpleCollector.class).in(Singleton.class);
         bind(Presenter.class).to(PresenterImpl.class).in(Singleton.class);
     }
