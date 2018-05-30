@@ -8,7 +8,6 @@ import com.github.javaparser.ast.expr.UnaryExpr;
 import com.github.javaparser.ast.stmt.DoStmt;
 import com.github.javaparser.ast.stmt.IfStmt;
 import com.github.javaparser.ast.stmt.WhileStmt;
-import com.sun.istack.internal.NotNull;
 
 public class ConstantConditionChecker extends BaseAdapter {
     @Override
@@ -41,7 +40,7 @@ public class ConstantConditionChecker extends BaseAdapter {
         addWarning(expr, true, collector);
     }
 
-    private void addWarning(Expression expr, @NotNull Boolean result, Collector collector) {
+    private void addWarning(Expression expr, Boolean result, Collector collector) {
         collector.addWarning(className, getRangeString(expr) + "Condition is always " + result.toString() + ".");
     }
 
