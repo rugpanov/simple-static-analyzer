@@ -38,5 +38,7 @@ method cannot be 'abstract' and also 'private', 'static').
 ## Download .jar
 [`Release 1.0.0` - analyzer.jar](https://github.com/rugpanov/simple-static-analyzer/releases/download/1.0.0/analyzer.jar)
 
+[`Release 1.2` - analyzer-1.2.jar](https://github.com/rugpanov/simple-static-analyzer/releases/download/1.2/analyzer-1.2.jar)
+
 \
 ![](assert/ifmo.svg)
