@@ -2,6 +2,7 @@ package analyzer;
 
 import analyzer.collectors.Collector;
 import com.github.javaparser.ast.CompilationUnit;
+import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 
 public abstract class BaseAdapter extends VoidVisitorAdapter<Collector> {
@@ -16,5 +17,11 @@ public abstract class BaseAdapter extends VoidVisitorAdapter<Collector> {
             classIsPublic = compilationUnit.getTypes().get(0).isPublic();
         }
         super.visit(compilationUnit, collector);
+    }
+
+    protected String getRangeString(Node node) {
+        return node.getRange()
+                .map(range -> "[" + range.begin.line + ":" + range.begin.column + "] ")
+                .orElse("");
     }
 }
